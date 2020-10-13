@@ -13,7 +13,7 @@
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist/spa"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
