@@ -11,7 +11,15 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Julio Silva GitHub </q-toolbar-title>
+        <q-toolbar-title>
+          <a
+            class="link"
+            href="https://github.com/jucesarsilva"
+            target="_blank"
+          >
+            Julio Silva GitHub
+          </a>
+        </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
@@ -40,6 +48,12 @@ import { defineComponent, ref } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
 
 const linksList = [
+  {
+    title: 'Julio Silva GitHub',
+    caption: 'Github page',
+    icon: 'home',
+    link: 'https://github.com/jucesarsilva',
+  },
   {
     title: 'HTML5 Game',
     caption: 'A game using eS6/html5/webpack/scss',
