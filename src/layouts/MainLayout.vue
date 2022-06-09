@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh lpR fFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -8,30 +8,19 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+        <q-toolbar-title> Julio Silva GitHub </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
+        <q-item-label header> Páginas de Exemplos </q-item-label>
+
         <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
@@ -46,62 +35,90 @@
   </q-layout>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
 
-const linksData = [
+const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
+    title: 'HTML5 Game',
+    caption: 'A game using eS6/html5/webpack/scss',
+    icon: 'rocket_launch',
+    link: 'https://jucesarsilva.github.io/html5-game/',
+  },
+  {
+    title: 'React GitHub',
+    caption: 'A website that consumes the GitHub API',
+    icon: 'fingerprint',
+    link: 'https://jucesarsilva.github.io/inception/',
+  },
+  {
+    title: 'HTML5 Game Tile',
+    caption: 'A Tile-based game',
+    icon: 'sports_esports',
+    link: 'https://jucesarsilva.github.io/html5-tiles-based-game/',
+  },
+  {
+    title: 'PWA freelancer App',
+    caption: 'A PWA private app',
+    icon: 'app_shortcut',
+    link: 'https://jucesarsilva.github.io/pauapixel-pwa.github.io/#/login',
+  },
+  {
+    title: 'Shuffler algorithms',
+    caption: 'A simples test algorithms',
+    icon: 'functions',
+    link: 'https://jucesarsilva.github.io/shuffler-algorithms/',
+  },
+  {
+    title: 'Vuetify Masks pt-br',
+    caption: 'Masks to use with Inputs Vuetify components',
+    icon: 'tag',
+    link: 'https://jucesarsilva.github.io/vuetify-masks-br/',
+  },
+  {
+    title: 'Angular PWA Schedule',
+    caption: 'Angular 8 study case',
+    icon: 'schedule',
+    link: 'https://jucesarsilva.github.io/point-control-angular',
+  },
+  {
+    title: 'Alura Armazenando Web',
+    caption: 'Curso: javascript na web armazenando dados no navegador',
     icon: 'school',
-    link: 'https://quasar.dev',
+    link: 'https://jucesarsilva.github.io/alura/mochila-de-viagem/',
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework',
+    title: 'Alura Typescript parte 1',
+    caption: 'Curso: typescript parte 1: evoluindo seu javascript',
+    icon: 'school',
+    link: 'https://jucesarsilva.github.io/alura/typescript-curso-1/public/',
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev',
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev',
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev',
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev',
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev',
+    title: 'Alura Typescript parte 2',
+    caption: 'Curso: typescript parte 2: evoluindo seu javascript',
+    icon: 'school',
+    link: 'https://jucesarsilva.github.io/alura/typescript-curso-2/public/',
   },
 ];
 
-export default {
+export default defineComponent({
   name: 'MainLayout',
-  components: { EssentialLink },
-  data() {
+
+  components: {
+    EssentialLink,
+  },
+
+  setup() {
+    const leftDrawerOpen = ref(false);
+
     return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData,
+      essentialLinks: linksList,
+      leftDrawerOpen,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
     };
   },
-};
+});
 </script>
